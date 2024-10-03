@@ -1,37 +1,19 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { useFonts } from "expo-font";
+import { Stack } from "expo-router";
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+export default function RootLayout() {
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
 
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
-        }}
-      />
-    </Tabs>
+  useFonts({
+    'outfit':require('../../assets/fonts/Outfit-Regular.ttf'),
+    'outfit-Medium':require('../../assets/fonts/Outfit-Medium.ttf'),
+    'outfit-Bold':require('../../assets/fonts/Outfit-Bold.ttf')
+  })
+
+
+  return(
+    <Stack>
+      <Stack.Screen name="index"/>
+    </Stack>
   );
 }
